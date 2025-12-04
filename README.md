@@ -1,20 +1,17 @@
 # 🐱 Sistem Pakar Diagnosis Penyakit Kucing  
 Aplikasi berbasis web untuk mendiagnosis penyakit kucing menggunakan metode forward chaining dengan rule-based expert system.
 
----
-
-## 📌 Deskripsi Singkat  
-Sistem ini melakukan diagnosis awal penyakit kucing berdasarkan gejala yang dipilih pengguna, kemudian menghasilkan kesimpulan dan menyimpan riwayat diagnosis ke dalam database.
+## Deskripsi   
+Sistem ini merupakan aplikasi web yang dirancang untuk melakukan diagnosis awal pada kucing berdasarkan gejala yang dipilih pengguna. Proses diagnosis dilakukan menggunakan metode forward chaining, yaitu teknik penalaran yang memulai analisis dari fakta awal berupa gejala, kemudian mencocokkannya dengan aturan yang tersimpan dalam rule based knowledge base hingga menghasilkan kesimpulan penyakit yang paling sesuai. Dengan antarmuka sederhana untuk memilih gejala, memproses analisis, dan menampilkan hasil diagnosis secara langsung, sistem juga menyimpan riwayat pemeriksaan setiap pengguna melalui integrasi database MySQL. Riwayat ini dapat diakses kembali kapan saja untuk memantau perkembangan kondisi kucing.
 
 ---
 
-## ✨ Fitur Utama  
+## ✨ Fitur   
 - 🔐 Registrasi dan login pengguna  
-- 🧩 Pemilihan gejala melalui antarmuka web  
+- 🧩 Pemilihan gejala 
 - 🧠 Proses diagnosis dengan forward chaining  
 - 🗂️ Penyimpanan riwayat diagnosis per pengguna  
-- 📊 Pengelolaan data berbasis MySQL  
-- 🐾 Antarmuka sederhana dan mudah digunakan  
+- 📊 Pengelolaan data berbasis MySQL   
 
 ---
 
@@ -27,7 +24,7 @@ Sistem ini melakukan diagnosis awal penyakit kucing berdasarkan gejala yang dipi
 
 ---
 
-## 📁 Struktur Folder Utama  
+## 📁 Struktur Folder  
 
 ---
 
@@ -61,11 +58,9 @@ Relasi:
 5. Jalankan XAMPP/Laragon  
 6. Akses melalui browser:  
 
-
-
 ---
 
-## 🔍 Alur Kerja Forward Chaining  
+## Alur Kerja Forward Chaining  
 1. Pengguna memilih gejala  
 2. Sistem memasukkan gejala sebagai fakta awal  
 3. Fakta dibandingkan dengan rule base  
@@ -83,4 +78,4 @@ Relasi:
 ---
 
 ## 🙌 Kredit  
-Projek ini dibuat sebagai implementasi sistem pakar berbasis forward chaining untuk diagnosis penyakit kucing dalam konteks pembelajaran kecerdasan buatan dan pengembangan web.
+Projek ini dibuat sebagai implementasi sistem pakar berbasis forward chaining untuk diagnosis penyakit kucing sebagai project UAS Kecerdasan Buatan.
