@@ -1,0 +1,9 @@
+<?php
+// logout_handler.php
+session_start();
+// ... (Kode untuk menghapus sesi dan cookie tetap sama) ...
+
+// PENTING: PASTIKAN TIDAK ADA OUTPUT DI SINI SEBELUMNYA
+header('Content-Type: application/json');
+echo json_encode(['success' => true]);
+?>
