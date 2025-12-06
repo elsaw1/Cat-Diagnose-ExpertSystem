@@ -13,7 +13,46 @@ Sistem ini merupakan aplikasi web yang dirancang untuk melakukan diagnosis awal 
 - 🗂️ Penyimpanan riwayat diagnosis per pengguna  
 - 📊 Pengelolaan data berbasis MySQL   
 
----
+
+
+## 📁 Struktur Folder  
+C:\xampp\htdocs\catdiagnosa
+
+├─ index.php
+
+├─ config
+
+│  └─ koneksi.php
+
+├─ assets
+
+│  ├─ css
+
+│  ├─ js
+
+│  └─ images
+
+├─ pages
+
+└─ database
+
+   └─ catdiagnosa.sql
+
+
+
+## CARA MENGAKSES WEBSITE CAT DIAGNOSE SYSTEM
+
+1. Simpan semua file project ke:
+   C:\xampp\htdocs\catdiagnosa
+2. Pastikan struktur folder seperti berikut:
+3. Jalankan XAMPP Control Panel.
+4. Klik Start pada: Apache dan MySQL
+5. Buka browser.
+6. Akses website melalui alamat:
+   http://localhost/catdiagnosa/index.php
+7. Website Cat Diagnose System siap digunakan.
+
+
 
 ## 🛠️ Teknologi yang Digunakan  
 - **HTML** – Struktur tampilan  
@@ -22,41 +61,54 @@ Sistem ini merupakan aplikasi web yang dirancang untuk melakukan diagnosis awal 
 - **PHP** – Pemrosesan server dan manajemen sesi  
 - **MySQL** – Basis data untuk pengguna dan riwayat  
 
----
 
-## 📁 Struktur Folder  
 
----
+## Struktur Database
 
-## 🗄️ Struktur Database  
 ### Tabel `users`
-| Kolom     | Tipe        |
-|-----------|-------------|
-| id        | INT (PK)    |
-| email     | VARCHAR     |
-| username  | VARCHAR     |
-| password  | VARCHAR     |
+| Kolom        | Tipe                |
+|--------------|---------------------|
+| user_id      | INT (PK)            |
+| nama_lengkap | VARCHAR(150)        |
+| email        | VARCHAR(100) UNIQUE |
+| password     | VARCHAR(255)        |
+| created_at   | TIMESTAMP           |
 
-### Tabel `riwayat`
-| Kolom     | Tipe        |
-|-----------|-------------|
-| id        | INT (PK)    |
-| user_id   | INT (FK)    |
-| hasil     | VARCHAR     |
-| tanggal   | DATETIME    |
+### Tabel `gejala`
+| Kolom        | Tipe          |
+|--------------|---------------|
+| gejala_kode  | VARCHAR(5) PK |
+| deskripsi    | VARCHAR(255)  |
 
-Relasi:  
-`users.id` → `riwayat.user_id` (one-to-many)
+### Tabel `penyakit`
+| Kolom            | Tipe          |
+|------------------|---------------|
+| penyakit_kode    | VARCHAR(5) PK |
+| nama_penyakit    | VARCHAR(150)  |
+| saran_penanganan | TEXT          |
 
----
+### Tabel `diagnosa`
+| Kolom         | Tipe             |
+|---------------|------------------|
+| diagnosa_id   | INT (PK)         |
+| gejala_kode   | VARCHAR(5)       |
+| penyakit_kode | VARCHAR(5)       |
+| bobot         | DECIMAL(5,2)     |
 
-## 🚀 Cara Instalasi (Localhost)
-1. Clone atau ekstrak projek ke folder `htdocs` atau web server lain  
-2. Buat database, contoh: `pakar_kucing`  
-3. Buat tabel sesuai struktur di atas  
-4. Edit file `config/db_connect.php` untuk menyesuaikan koneksi  
-5. Jalankan XAMPP/Laragon  
-6. Akses melalui browser:  
+Relasi diagnosa  
+- gejala_kode → gejala.gejala_kode  
+- penyakit_kode → penyakit.penyakit_kode  
+
+### Tabel `riwayat_diagnosa`
+| Kolom          | Tipe        |
+|----------------|-------------|
+| riwayat_id     | INT (PK)    |
+| user_id        | INT         |
+| waktu_diagnosa | TIMESTAMP   |
+| hasil_penyakit | TEXT        |
+
+Relasi riwayat_diagnosa  
+- user_id → users.user_id  
 
 ---
 
