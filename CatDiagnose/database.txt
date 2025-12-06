@@ -1,0 +1,93 @@
+-- 1. Buat Database
+CREATE DATABASE IF NOT EXISTS cat_health_assistant;
+USE cat_health_assistant;
+
+-- 2. Tabel USERS (Autentikasi Pengguna - DIUBAH)
+-- Menghapus 'username' dan menggunakan 'email' sebagai ID unik untuk login
+CREATE TABLE users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    nama_lengkap VARCHAR(150) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,  -- Email dijadikan UNIQUE untuk login
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 3. Tabel GEJALA (Daftar Gejala)
+CREATE TABLE gejala (
+    gejala_kode VARCHAR(5) PRIMARY KEY,
+    deskripsi VARCHAR(255) NOT NULL
+);
+
+-- 4. Tabel PENYAKIT (Daftar Penyakit & Saran)
+CREATE TABLE penyakit (
+    penyakit_kode VARCHAR(5) PRIMARY KEY,
+    nama_penyakit VARCHAR(150) NOT NULL,
+    saran_penanganan TEXT
+);
+
+-- 5. Tabel DIAGNOSA (Rule Base / Aturan Inferensi)
+CREATE TABLE diagnosa (
+    diagnosa_id INT AUTO_INCREMENT PRIMARY KEY,
+    gejala_kode VARCHAR(5) NOT NULL,
+    penyakit_kode VARCHAR(5) NOT NULL,
+    bobot DECIMAL(5,2) DEFAULT 1.00,
+    UNIQUE KEY uk_diagnosa (gejala_kode, penyakit_kode),
+    FOREIGN KEY (gejala_kode) REFERENCES gejala(gejala_kode) ON DELETE CASCADE,
+    FOREIGN KEY (penyakit_kode) REFERENCES penyakit(penyakit_kode) ON DELETE CASCADE
+);
+
+-- 6. Tabel RIWAYAT_DIAGNOSA (Riwayat Pengguna)
+CREATE TABLE riwayat_diagnosa (
+    riwayat_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    waktu_diagnosa TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    hasil_penyakit TEXT, 
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+);
+
+-- ----------------------------------------------------
+-- DATA SEEDING (INSERT)
+-- ----------------------------------------------------
+
+-- Memasukkan data ke tabel GEJALA
+INSERT INTO gejala (gejala_kode, deskripsi) VALUES
+('G1', 'Muntah'),
+('G2', 'Tidak mau makan'),
+('G3', 'Diare'),
+('G4', 'Lemas'),
+('G5', 'Mata berair'),
+('G6', 'Hidung berair'),
+('G7', 'Batuk'),
+('G8', 'Nafas cepat'),
+('G9', 'Demam');
+
+-- Memasukkan data ke tabel PENYAKIT
+INSERT INTO penyakit (penyakit_kode, nama_penyakit, saran_penanganan) VALUES
+('P1', 'Gangguan Pencernaan', 'Berikan makanan lunak dan pantau 24 jam.'),
+('P2', 'Flu Kucing (Calicivirus/HERPES)', 'Bersihkan mata & hidung, jaga kelembapan, isolasi dari kucing lain.'),
+('P3', 'Parasit Usus', 'Berikan obat cacing & selalu jaga kebersihan litter box.'),
+('P4', 'Infeksi Saluran Napas Atas', 'Segera ke dokter hewan jika sesak napas atau demam tinggi.'),
+('P5', 'Dehidrasi / Kelemahan Sistemik', 'Berikan cairan oral (Pedialyte tanpa rasa) & segera ke dokter hewan.');
+
+-- Memasukkan data ke tabel DIAGNOSA (Aturan Inferensi)
+INSERT INTO diagnosa (gejala_kode, penyakit_kode) VALUES
+-- P1: Gangguan Pencernaan (G1, G2)
+('G1', 'P1'), 
+('G2', 'P1'), 
+
+-- P2: Flu Kucing (G5, G6)
+('G5', 'P2'), 
+('G6', 'P2'), 
+
+-- P3: Parasit Usus (G3, G4)
+('G3', 'P3'), 
+('G4', 'P3'), 
+
+-- P4: Infeksi Saluran Napas Atas (G7, G8)
+('G7', 'P4'), 
+('G8', 'P4'), 
+
+-- P5: Dehidrasi / Kelemahan Sistemik (G2, G4) dan/atau (G2, G9)
+('G2', 'P5'), 
+('G4', 'P5'), 
+('G9', 'P5');
