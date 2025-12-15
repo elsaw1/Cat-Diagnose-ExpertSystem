@@ -141,9 +141,14 @@ Proyek ini dikembangkan sebagai implementasi Sistem Pakar berbasis Forward Chain
   <img src="https://skillicons.dev/icons?i=php" height="60" alt="php logo" />
   <img width="12" />
 
+  <!-- JavaScript -->
+  <img src="https://skillicons.dev/icons?i=js" height="60" alt="javascript logo" />
+  <img width="12" />
+
   <!-- Database -->
   <img src="https://skillicons.dev/icons?i=mysql" height="60" alt="mysql logo" />
 </div>
+
 
 ###
 
