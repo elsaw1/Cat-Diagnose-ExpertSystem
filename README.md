@@ -1,5 +1,5 @@
 # 🐱 Sistem Pakar Diagnosis Penyakit Kucing  
-Aplikasi berbasis web untuk mendiagnosis penyakit kucing menggunakan metode forward chaining dengan rule-based expert system.
+**Web-Based Expert System dengan Metode Forward Chaining**
 
 Sistem ini merupakan aplikasi web yang dirancang untuk melakukan diagnosis awal pada kucing berdasarkan gejala yang dipilih pengguna. Proses diagnosis dilakukan menggunakan metode forward chaining, yaitu teknik penalaran yang memulai analisis dari fakta awal berupa gejala, kemudian mencocokkannya dengan aturan yang tersimpan dalam rule based knowledge base hingga menghasilkan kesimpulan penyakit yang paling sesuai. Dengan antarmuka sederhana untuk memilih gejala, memproses analisis, dan menampilkan hasil diagnosis secara langsung, sistem juga menyimpan riwayat pemeriksaan setiap pengguna melalui integrasi database MySQL. Riwayat ini dapat diakses kembali kapan saja untuk memantau perkembangan kondisi kucing.
 
@@ -28,16 +28,16 @@ C:\xampp\htdocs\catdiagnosa
 ```
 
 
-## CARA MENGAKSES WEBSITE CAT DIAGNOSE SYSTEM
+## Cara Akses Website
 
 1. Simpan semua file project ke:
-   C:\xampp\htdocs\catdiagnosa
+   `C:\xampp\htdocs\catdiagnosa`
 2. Pastikan struktur folder seperti berikut:
 3. Jalankan XAMPP Control Panel.
 4. Klik Start pada: Apache dan MySQL
 5. Buka browser.
 6. Akses website melalui alamat:
-   http://localhost/catdiagnosa/index.php
+   `http://localhost/catdiagnosa/index.php`
 7. Website Cat Diagnose System siap digunakan.
 
 
@@ -48,7 +48,6 @@ C:\xampp\htdocs\catdiagnosa
 - **JavaScript** – Logika forward chaining  
 - **PHP** – Pemrosesan server dan manajemen sesi  
 - **MySQL** – Basis data untuk pengguna dan riwayat  
-
 
 
 ## Struktur Database
@@ -106,7 +105,7 @@ Relasi riwayat_diagnosa  `user_id → users.user_id`
 5. Hasil ditampilkan dan disimpan ke database  
 
 
-## 🌱 Pengembangan Selanjutnya  
+## 🌱 Rencana Pengembangan Selanjutnya  
 - Penambahan gejala dan penyakit  
 - Penambahan solusi dan rekomendasi lanjutan  
 - Visualisasi grafik perkembangan kesehatan  
@@ -117,7 +116,7 @@ Relasi riwayat_diagnosa  `user_id → users.user_id`
 
 
 ## Kredit  
-Projek ini dibuat sebagai implementasi sistem pakar berbasis forward chaining untuk diagnosis penyakit kucing sebagai project UAS Kecerdasan Buatan.
+Proyek ini dikembangkan sebagai implementasi Sistem Pakar berbasis Forward Chaining untuk memenuhi kebutuhan Project UAS Mata Kuliah Kecerdasan Buatan.
 ###
 
 <div align="center">
